@@ -3,6 +3,7 @@ import os
 import sqlite3
 import uuid
 import json
+import html
 
 from datetime import datetime
 
@@ -1714,6 +1715,8 @@ Rules:
             st.session_state.flashcard_index = current_index
 
             current_card = cards[current_index]
+            question_text = html.escape(str(current_card.get("question", "")))
+            answer_text = html.escape(str(current_card.get("answer", "")))
 
             st.markdown(
                 '<div class="section-title">Your flashcards</div>',
@@ -1748,7 +1751,7 @@ Rules:
                         </div>
 
                     
-                            {current_card["answer"] if st.session_state.flashcard_show_answer else current_card["question"]}
+                           {answer_text if st.session_state.flashcard_show_answer else question_text}
                         </div>
                     </div>
                     """,
