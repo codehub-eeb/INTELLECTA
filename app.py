@@ -1874,6 +1874,9 @@ elif st.session_state.page == "Study Planner":
                     Your planner is clear.
                 </div>
 
+                <div class="feature-description">
+                    Add your first task to organize your study schedule.
+                </div>
             </div>
         """, unsafe_allow_html=True)
 
