@@ -167,809 +167,293 @@ if st.session_state.conversation_id is None:
 
 # =========================================================
 # INTELLECTA DESIGN SYSTEM
-# PREMIUM CHARCOAL + EMERALD + MINT
+# PREMIUM WHITE + ROYAL BLUE
 # =========================================================
 
-st.markdown("""
+st.markdown(r"""
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 :root {
-    color-scheme: dark;
-
-    --bg: #101311;
-    --bg-soft: #151A17;
-
-    --surface: rgba(27, 34, 30, .88);
-    --surface-solid: #1B221E;
-    --surface-raised: #222B25;
-
-    --accent: #55D6A0;
-    --accent-light: #8BE9BD;
-    --accent-strong: #32BD83;
-
-    --accent-soft: rgba(85, 214, 160, .13);
-    --accent-glow: rgba(85, 214, 160, .16);
-
-    --text: #F1F6F2;
-    --muted: #A0ADA4;
-    --muted-2: #7D8A81;
-
-    --dark-text: #102018;
-
-    --border: rgba(221, 241, 228, .11);
-    --border-strong: rgba(85, 214, 160, .28);
+    color-scheme: light;
+    --bg: #F5F8FF;
+    --surface: #FFFFFF;
+    --surface-soft: #F0F5FF;
+    --blue: #1457C5;
+    --blue-dark: #0A347E;
+    --blue-light: #E8F0FF;
+    --text: #14233D;
+    --muted: #64748B;
+    --border: #DCE6F5;
 }
 
-
-/* GLOBAL */
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 24px;
-    background: var(--bg);
-}
-
-body,
-.stApp,
-[data-testid="stAppViewContainer"] {
+html, body, .stApp, [data-testid="stAppViewContainer"] {
     background: var(--bg) !important;
     color: var(--text) !important;
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'DM Sans', sans-serif !important;
 }
-
 .stApp {
     background:
-        radial-gradient(ellipse at 82% 0%, rgba(85,214,160,.105), transparent 34%),
-        radial-gradient(ellipse at 0% 65%, rgba(85,214,160,.045), transparent 32%),
-        linear-gradient(145deg, #101311 0%, #121814 52%, #101512 100%) !important;
+      radial-gradient(ellipse at 80% 0%, rgba(37,99,235,.09), transparent 34%),
+      radial-gradient(ellipse at 0% 65%, rgba(59,130,246,.055), transparent 30%),
+      linear-gradient(145deg, #F8FAFF 0%, #F2F6FD 100%) !important;
 }
-
-[data-testid="stMain"],
-[data-testid="stMainBlockContainer"],
-.main,
-.block-container,
-[data-testid="stVerticalBlock"],
-[data-testid="stHorizontalBlock"] {
+[data-testid="stMain"], [data-testid="stMainBlockContainer"], .main,
+.block-container, [data-testid="stVerticalBlock"], [data-testid="stHorizontalBlock"] {
     background-color: transparent !important;
 }
+.block-container { max-width: 1440px; padding-top: 2rem; padding-bottom: 3.5rem; }
+[data-testid="stHeader"] { background: rgba(248,250,255,.88) !important; border-bottom: 1px solid #E5ECF7; }
+[data-testid="stToolbar"] { background: transparent !important; }
+#MainMenu, footer { visibility: hidden; }
 
-.block-container {
-    max-width: 1440px;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-}
-
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
-}
-
-::-webkit-scrollbar-track {
-    background: #101512;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #3B4940;
-    border: 2px solid #101512;
-    border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #55A982;
-}
-
-
-/* ANIMATIONS */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #F1F5FB; }
+::-webkit-scrollbar-thumb { background: #C4D2E7; border: 2px solid #F1F5FB; border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover { background: #8EABD5; }
 
 @keyframes intellectaFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-title, .hero-subtitle, .metric-card, .feature-card, .glass-card {
+  animation: intellectaFadeUp .42s ease both;
+}
+.metric-card, .feature-card, .glass-card, .stButton > button,
+.stDownloadButton > button, [data-testid="stSegmentedControl"] button {
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease,
+              transform .2s ease, color .2s ease !important;
 }
 
-.hero-title,
-.hero-subtitle,
-.metric-card,
-.feature-card,
-.glass-card {
-    animation: intellectaFadeUp .48s ease both;
-}
-
-.metric-card,
-.feature-card,
-.glass-card,
-.stButton > button,
-.stDownloadButton > button,
-[data-testid="stSegmentedControl"] button {
-    transition:
-        background .22s ease,
-        border-color .22s ease,
-        box-shadow .22s ease,
-        transform .22s ease,
-        color .22s ease !important;
-}
-
-
-/* HEADER */
-
-[data-testid="stHeader"] {
-    background: rgba(16, 19, 17, .82) !important;
-    border-bottom: 1px solid rgba(221,241,228,.045);
-}
-
-[data-testid="stToolbar"] {
-    background: transparent !important;
-}
-
-#MainMenu,
-footer {
-    visibility: hidden;
-}
-
-
-/* SIDEBAR */
-
+/* Sidebar */
 [data-testid="stSidebar"] {
-    background: rgba(19, 25, 21, .97) !important;
-    border-right: 1px solid var(--border) !important;
+  background: rgba(255,255,255,.96) !important;
+  border-right: 1px solid var(--border) !important;
+  box-shadow: 5px 0 24px rgba(20,55,105,.035);
 }
-
-[data-testid="stSidebar"] > div:first-child {
-    background: transparent !important;
-    padding-top: 1.35rem;
-}
-
-[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
-    background: transparent !important;
-}
-
+[data-testid="stSidebar"] > div:first-child { background: transparent !important; padding-top: 1.25rem; }
+[data-testid="stSidebar"] [data-testid="stSidebarContent"] { background: transparent !important; }
 .brand {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: -1.6px;
-    color: #F5FAF6;
-    margin-bottom: 2px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 27px; font-weight: 800;
+  letter-spacing: -1.5px; color: var(--blue-dark); margin-bottom: 2px;
 }
-
-.brand span {
-    color: var(--accent);
-}
-
+.brand span { color: #3B82F6; }
 .brand-caption {
-    color: var(--muted-2);
-    font-size: 9px;
-    letter-spacing: 1.75px;
-    text-transform: uppercase;
-    margin-bottom: 27px;
+  color: #8292AA; font-size: 9px; letter-spacing: 1.7px;
+  text-transform: uppercase; margin-bottom: 26px;
 }
-
 .sidebar-label {
-    color: var(--muted-2);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.7px;
-    text-transform: uppercase;
-    margin: 20px 0 10px 5px;
+  color: #8A9AB2; font-size: 10px; font-weight: 800;
+  letter-spacing: 1.6px; text-transform: uppercase; margin: 18px 0 9px 5px;
 }
-
-[data-testid="stSidebar"] [data-testid="stRadio"] > div {
-    gap: 6px;
-}
-
+[data-testid="stSidebar"] [data-testid="stRadio"] > div { gap: 5px; }
 [data-testid="stSidebar"] [data-testid="stRadio"] label {
-    background: transparent !important;
-    border: 1px solid transparent !important;
-    border-radius: 13px !important;
-    padding: 8px 12px !important;
-    transition: all .2s ease !important;
+  background: transparent !important; border: 1px solid transparent !important;
+  border-radius: 12px !important; padding: 8px 11px !important;
 }
-
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-    background: rgba(255,255,255,.045) !important;
-    border-color: var(--border) !important;
+  background: #F3F7FF !important; border-color: #E2EAF8 !important;
 }
-
 [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
-    background: var(--accent-soft) !important;
-    border-color: var(--border-strong) !important;
+  background: #EAF1FF !important; border-color: #C9DAFA !important;
 }
-
 [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p {
-    color: var(--accent) !important;
-    font-weight: 700 !important;
+  color: var(--blue) !important; font-weight: 800 !important;
 }
+[data-testid="stSidebar"] [data-testid="stRadio"] p { color: #43536C !important; font-size: 13px !important; }
 
-[data-testid="stSidebar"] [data-testid="stRadio"] p {
-    color: #D0DAD2 !important;
-    font-size: 13px !important;
-}
-
-
-/* TYPOGRAPHY */
-
+/* Typography */
 h1, h2, h3, h4 {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    color: var(--text) !important;
-    letter-spacing: -.8px;
-    font-weight: 800 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important; color: var(--text) !important;
+  letter-spacing: -.7px; font-weight: 800 !important;
 }
-
-p, li, label {
-    color: #D3DDD5;
-}
-
-[data-testid="stMarkdownContainer"] {
-    color: #D3DDD5;
-}
-
+p, li, label, [data-testid="stMarkdownContainer"] { color: #34445E; }
 .hero-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(36px, 4vw, 54px);
-    line-height: 1.15;
-    font-weight: 800;
-    letter-spacing: -2px;
-    color: #F5FAF6;
-    margin-bottom: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(36px, 4vw, 55px);
+  line-height: 1.12; font-weight: 800; letter-spacing: -2.2px;
+  color: #102D5B; margin-bottom: 13px;
 }
-
-.hero-title span {
-    color: var(--accent);
-}
-
+.hero-title span { color: #2463D4; }
 .hero-subtitle {
-    color: var(--muted);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.85;
-    max-width: 700px;
-    margin-bottom: 8px;
+  color: #667792; font-size: 14px; line-height: 1.85;
+  max-width: 720px; margin-bottom: 9px;
 }
-
 .section-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 21px;
-    font-weight: 800;
-    color: #F1F6F2;
-    margin: 30px 0 15px;
-    letter-spacing: -.6px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 21px;
+  font-weight: 800; color: #17345F; margin: 29px 0 15px; letter-spacing: -.5px;
 }
+.small-muted { color: #8291A8; font-size: 12px; }
 
-.small-muted {
-    color: var(--muted-2);
-    font-size: 12px;
+/* Premium white glass cards */
+.glass-card, .metric-card, .feature-card {
+  position: relative; overflow: hidden; height: 100%;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(245,249,255,.94)) !important;
+  border: 1px solid rgba(195,211,237,.85) !important;
+  border-top-color: #FFFFFF !important; border-radius: 20px !important;
+  padding: 23px !important; backdrop-filter: blur(18px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  box-shadow: 0 10px 30px rgba(27,67,126,.065), inset 0 1px 0 #FFFFFF !important;
 }
-
-
-/* GLASS CARDS */
-
-.glass-card,
-.metric-card,
-.feature-card {
-    position: relative;
-    overflow: hidden;
-
-    background: linear-gradient(
-        135deg,
-        rgba(43, 57, 48, .78),
-        rgba(27, 35, 30, .68) 58%,
-        rgba(42, 73, 56, .32)
-    ) !important;
-
-    border: 1px solid rgba(220, 244, 228, .13) !important;
-    border-top-color: rgba(235, 255, 241, .22) !important;
-
-    border-radius: 20px !important;
-    padding: 23px !important;
-
-    backdrop-filter: blur(20px) saturate(140%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
-
-    box-shadow:
-        0 13px 34px rgba(0,0,0,.23),
-        inset 0 1px 0 rgba(255,255,255,.055) !important;
-
-    height: 100%;
+.glass-card::before, .metric-card::before, .feature-card::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(125deg, rgba(255,255,255,.8), transparent 45%, rgba(59,130,246,.035));
 }
-
-.glass-card::before,
-.metric-card::before,
-.feature-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background: linear-gradient(
-        125deg,
-        rgba(255,255,255,.055),
-        transparent 40%,
-        transparent 72%,
-        rgba(85,214,160,.045)
-    );
+.glass-card:hover, .metric-card:hover, .feature-card:hover {
+  transform: translateY(-3px); border-color: #A9C4F1 !important;
+  box-shadow: 0 16px 36px rgba(27,67,126,.11), 0 0 0 3px rgba(37,99,235,.035) !important;
 }
-
-.glass-card:hover,
-.metric-card:hover,
-.feature-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(85,214,160,.35) !important;
-
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.29),
-        0 0 22px rgba(85,214,160,.055),
-        inset 0 1px 0 rgba(255,255,255,.075) !important;
-}
-
-
-/* METRIC CARDS */
-
-.metric-card {
-    min-height: 145px;
-    padding: 24px !important;
-}
-
-.metric-label {
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    font-family: 'Inter', sans-serif;
-}
-
+.metric-card { min-height: 142px; padding: 23px !important; }
+.metric-label { color: #71819A; font-size: 10px; font-weight: 800; letter-spacing: 1.15px; }
 .metric-value {
-    color: #F5FAF6;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    margin-top: 10px;
-    letter-spacing: -1px;
+  color: #173F83; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px; font-weight: 800; margin-top: 10px; letter-spacing: -1px;
 }
-
-.metric-note {
-    color: var(--accent);
-    font-size: 11px;
-    margin-top: 5px;
-}
-
-
-/* FEATURE CARDS */
-
-.feature-card {
-    min-height: 160px;
-    padding: 26px !important;
-}
-
+.metric-note { color: #3470D1; font-size: 11px; margin-top: 5px; }
+.feature-card { min-height: 158px; padding: 25px !important; }
 .feature-title {
-    color: #F5FAF6;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: -.4px;
-    margin-bottom: 12px;
-    position: relative;
+  color: #183967; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px; font-weight: 800; letter-spacing: -.35px;
+  margin-bottom: 10px; position: relative;
 }
-
-.feature-description {
-    color: #B5C2B8;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    line-height: 1.8;
-    position: relative;
-}
-
-
-/* WORKSPACE GRID SPACING */
-
-[class*="st-key-workspace_grid"] {
-    width: 100%;
-}
-
+.feature-description { color: #65758E; font-size: 13px; line-height: 1.8; position: relative; }
+[class*="st-key-workspace_grid"] { width: 100%; }
 [class*="st-key-workspace_grid"] [data-testid="stHorizontalBlock"] {
-    gap: 1.5rem !important;
-    align-items: stretch !important;
+  gap: 1.35rem !important; align-items: stretch !important;
 }
+[class*="st-key-workspace_grid"] [data-testid="column"] { min-width: 0 !important; }
+.workspace-row-spacer { height: 22px; }
 
-[class*="st-key-workspace_grid"] [data-testid="column"] {
-    min-width: 0 !important;
+/* Buttons */
+.stButton > button, .stDownloadButton > button, [data-testid="stFormSubmitButton"] button {
+  background: linear-gradient(135deg, #2463D4, #164BAA) !important;
+  color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid rgba(31,91,190,.25) !important; border-radius: 50px !important;
+  padding: 9px 21px !important; min-height: 42px; font-size: 13px !important;
+  font-weight: 800 !important; box-shadow: 0 5px 16px rgba(36,99,212,.16);
 }
-
-[class*="st-key-workspace_grid"] .feature-card {
-    min-height: 160px;
-    height: 100%;
+.stButton > button *, .stDownloadButton > button *, [data-testid="stFormSubmitButton"] button * {
+  color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;
 }
-
-.workspace-row-spacer {
-    height: 24px;
-}
-
-
-/* BUTTONS */
-
-.stButton > button,
-.stDownloadButton > button,
-[data-testid="stFormSubmitButton"] button {
-    background: linear-gradient(135deg, #63DDAA, #3FC58F) !important;
-    color: #102018 !important;
-    -webkit-text-fill-color: #102018 !important;
-    border: 1px solid rgba(112,235,181,.72) !important;
-    border-radius: 50px !important;
-    padding: 9px 21px !important;
-    min-height: 42px;
-    font-size: 13px !important;
-    font-weight: 800 !important;
-    box-shadow: 0 4px 17px rgba(55,190,132,.11);
-}
-
-.stButton > button *,
-.stDownloadButton > button *,
-[data-testid="stFormSubmitButton"] button * {
-    color: #102018 !important;
-    -webkit-text-fill-color: #102018 !important;
-}
-
-.stButton > button:hover,
-.stDownloadButton > button:hover,
+.stButton > button:hover, .stDownloadButton > button:hover,
 [data-testid="stFormSubmitButton"] button:hover {
-    background: #8BE9BD !important;
-    color: #102018 !important;
-    -webkit-text-fill-color: #102018 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(55,190,132,.20) !important;
+  background: #0F3F98 !important; transform: translateY(-2px);
+  box-shadow: 0 9px 22px rgba(36,99,212,.23) !important;
 }
+.stButton > button:active, .stDownloadButton > button:active { transform: scale(.985); }
 
-.stButton > button:active,
-.stDownloadButton > button:active {
-    transform: scale(.985);
+/* Inputs */
+.stTextInput input, .stTextArea textarea, .stNumberInput input,
+[data-testid="stDateInput"] input, [data-testid="stTimeInput"] input {
+  background: #FFFFFF !important; color: #1E2F4A !important;
+  -webkit-text-fill-color: #1E2F4A !important; border: 1px solid #D5E0F0 !important;
+  border-radius: 12px !important; caret-color: #2463D4 !important;
 }
-
-
-/* INPUTS */
-
-.stTextInput input,
-.stTextArea textarea,
-.stNumberInput input,
-[data-testid="stDateInput"] input,
-[data-testid="stTimeInput"] input {
-    background: #1A211C !important;
-    color: #F1F6F2 !important;
-    -webkit-text-fill-color: #F1F6F2 !important;
-    border: 1px solid #3B4940 !important;
-    border-radius: 12px !important;
-    caret-color: var(--accent) !important;
+.stTextInput input::placeholder, .stTextArea textarea::placeholder {
+  color: #91A0B5 !important; -webkit-text-fill-color: #91A0B5 !important;
 }
-
-.stTextInput input::placeholder,
-.stTextArea textarea::placeholder {
-    color: #839087 !important;
-    -webkit-text-fill-color: #839087 !important;
-}
-
-.stTextInput input:focus,
-.stTextArea textarea:focus,
-.stNumberInput input:focus,
+.stTextInput input:focus, .stTextArea textarea:focus, .stNumberInput input:focus,
 [data-testid="stDateInput"] input:focus {
-    border-color: rgba(85,214,160,.78) !important;
-    box-shadow: 0 0 0 1px rgba(85,214,160,.17) !important;
+  border-color: #6C98E5 !important; box-shadow: 0 0 0 3px rgba(37,99,235,.09) !important;
 }
-
-
-/* SELECTBOX AND DROPDOWNS */
-
 [data-testid="stSelectbox"] [data-baseweb="select"] > div,
 [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
-    background: #1A211C !important;
-    color: #F1F6F2 !important;
-    border: 1px solid #3B4940 !important;
-    border-radius: 12px !important;
-    min-height: 42px;
+  background: #FFFFFF !important; color: #243752 !important;
+  border: 1px solid #D5E0F0 !important; border-radius: 12px !important; min-height: 42px;
 }
-
 [data-testid="stSelectbox"] [data-baseweb="select"] span,
-[data-testid="stMultiSelect"] [data-baseweb="select"] span {
-    color: #F1F6F2 !important;
+[data-testid="stMultiSelect"] [data-baseweb="select"] span { color: #243752 !important; }
+[data-baseweb="popover"], [data-baseweb="menu"], [role="listbox"],
+[data-testid="stPopoverBody"], [data-testid="stDatePicker"] {
+  background: #FFFFFF !important; color: #243752 !important;
+  border: 1px solid #DCE6F5 !important; border-radius: 13px !important;
+  box-shadow: 0 14px 38px rgba(22,54,102,.14) !important;
 }
-
-[data-testid="stSelectbox"] svg,
-[data-testid="stMultiSelect"] svg {
-    color: var(--accent) !important;
-    fill: var(--accent) !important;
+[role="option"], [data-baseweb="menu"] li { background: #FFFFFF !important; color: #34445E !important; }
+[role="option"]:hover, [data-baseweb="menu"] li:hover { background: #EDF3FF !important; color: #1457C5 !important; }
+[data-testid="stSegmentedControl"], [data-baseweb="button-group"] {
+  background: #EDF2FA !important; border: 1px solid #DCE6F5 !important;
+  border-radius: 50px !important; padding: 4px !important; gap: 4px !important;
 }
-
-[data-baseweb="popover"],
-[data-baseweb="menu"],
-[role="listbox"],
-[data-testid="stPopoverBody"],
-[data-testid="stDatePicker"] {
-    background: #1B241E !important;
-    color: #F1F6F2 !important;
-    border: 1px solid rgba(85,214,160,.22) !important;
-    border-radius: 13px !important;
-    box-shadow: 0 14px 38px rgba(0,0,0,.48) !important;
+[data-testid="stSegmentedControl"] button, [data-baseweb="button-group"] button {
+  background: transparent !important; color: #61728D !important;
+  -webkit-text-fill-color: #61728D !important; border: 1px solid transparent !important;
+  border-radius: 50px !important; font-size: 13px !important; font-weight: 700 !important;
+  padding: 8px 17px !important;
 }
-
-[role="option"],
-[data-baseweb="menu"] li {
-    background: #1B241E !important;
-    color: #DCE6DE !important;
-}
-
-[role="option"]:hover,
-[data-baseweb="menu"] li:hover {
-    background: rgba(85,214,160,.12) !important;
-    color: var(--accent) !important;
-}
-
-[role="option"][aria-selected="true"] {
-    background: rgba(85,214,160,.16) !important;
-    color: var(--accent) !important;
-}
-
-
-/* SEGMENTED CONTROL */
-
-[data-testid="stSegmentedControl"],
-[data-baseweb="button-group"] {
-    background: rgba(255,255,255,.045) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 50px !important;
-    padding: 5px !important;
-    gap: 5px !important;
-}
-
-[data-testid="stSegmentedControl"] button,
-[data-baseweb="button-group"] button {
-    background: transparent !important;
-    color: #AEBAB1 !important;
-    -webkit-text-fill-color: #AEBAB1 !important;
-    border: 1px solid transparent !important;
-    border-radius: 50px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    padding: 8px 18px !important;
-}
-
-[data-testid="stSegmentedControl"] button:not([aria-pressed="true"]):not([aria-checked="true"]),
-[data-baseweb="button-group"] button:not([aria-pressed="true"]):not([aria-checked="true"]) {
-    color: #AEBAB1 !important;
-    -webkit-text-fill-color: #AEBAB1 !important;
-}
-
-[data-testid="stSegmentedControl"] button:hover:not([aria-pressed="true"]):not([aria-checked="true"]),
-[data-baseweb="button-group"] button:hover:not([aria-pressed="true"]):not([aria-checked="true"]) {
-    background: rgba(85,214,160,.08) !important;
-    color: var(--accent-light) !important;
-    -webkit-text-fill-color: var(--accent-light) !important;
-}
-
 [data-testid="stSegmentedControl"] button[aria-pressed="true"],
 [data-testid="stSegmentedControl"] button[aria-checked="true"],
 [data-baseweb="button-group"] button[aria-pressed="true"],
 [data-baseweb="button-group"] button[aria-checked="true"] {
-    background: linear-gradient(135deg, #63DDAA, #3FC58F) !important;
-    color: #102018 !important;
-    -webkit-text-fill-color: #102018 !important;
-    border: 1px solid rgba(112,235,181,.75) !important;
-    box-shadow: 0 3px 15px rgba(55,190,132,.15) !important;
-    font-weight: 800 !important;
+  background: linear-gradient(135deg, #2463D4, #164BAA) !important;
+  color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;
+  border: 1px solid #1B55B7 !important; box-shadow: 0 3px 12px rgba(36,99,212,.17) !important;
 }
+[data-testid="stCheckbox"] label, [data-testid="stRadio"] label { color: #40516B !important; }
+[data-testid="stCheckbox"] input, [data-testid="stRadio"] input { accent-color: #2463D4 !important; }
+[data-testid="stSlider"] [role="slider"] { background: #2463D4 !important; border-color: #2463D4 !important; }
 
-[data-testid="stSegmentedControl"] button[aria-pressed="true"] *,
-[data-testid="stSegmentedControl"] button[aria-checked="true"] *,
-[data-baseweb="button-group"] button[aria-pressed="true"] *,
-[data-baseweb="button-group"] button[aria-checked="true"] * {
-    color: #102018 !important;
-    -webkit-text-fill-color: #102018 !important;
-    font-weight: 800 !important;
-}
-
-[data-testid="stSegmentedControl"] button:focus,
-[data-baseweb="button-group"] button:focus {
-    outline: none !important;
-    box-shadow: 0 0 0 2px rgba(85,214,160,.25) !important;
-}
-
-
-/* CHECKBOXES, RADIO AND SLIDER */
-
-[data-testid="stCheckbox"] label,
-[data-testid="stRadio"] label {
-    color: #D3DDD5 !important;
-}
-
-[data-testid="stCheckbox"] input,
-[data-testid="stRadio"] input {
-    accent-color: var(--accent) !important;
-}
-
-[data-testid="stSlider"] [role="slider"] {
-    background: var(--accent) !important;
-    border-color: var(--accent) !important;
-}
-
-[data-testid="stSlider"] [data-testid="stThumbValue"] {
-    color: var(--accent) !important;
-}
-
-
-/* CHAT MESSAGES */
-
+/* Chat */
 [data-testid="stChatMessage"] {
-    background: rgba(39, 51, 43, .62) !important;
-    border: 1px solid rgba(220,244,228,.10) !important;
-    border-radius: 17px !important;
-    padding: 15px !important;
-    margin-bottom: 13px !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+  background: rgba(255,255,255,.88) !important; border: 1px solid #DCE6F5 !important;
+  border-radius: 17px !important; padding: 15px !important; margin-bottom: 12px !important;
+  box-shadow: 0 5px 18px rgba(28,61,110,.045);
 }
-
 [data-testid="stChatInput"] {
-    background: rgba(26, 34, 29, .96) !important;
-    border: 1px solid rgba(85,214,160,.25) !important;
-    border-radius: 17px !important;
-    transition: all .22s ease !important;
+  background: rgba(255,255,255,.98) !important; border: 1px solid #C9D9F1 !important;
+  border-radius: 17px !important; box-shadow: 0 8px 24px rgba(28,61,110,.07);
 }
-
 [data-testid="stChatInput"]:focus-within {
-    border-color: var(--accent) !important;
-    box-shadow: 0 0 22px rgba(85,214,160,.09) !important;
+  border-color: #5C8FE2 !important; box-shadow: 0 0 0 3px rgba(37,99,235,.09) !important;
 }
-
 [data-testid="stChatInput"] textarea {
-    background: transparent !important;
-    color: #F1F6F2 !important;
-    -webkit-text-fill-color: #F1F6F2 !important;
-    caret-color: var(--accent) !important;
+  background: transparent !important; color: #1E2F4A !important;
+  -webkit-text-fill-color: #1E2F4A !important; caret-color: #2463D4 !important;
 }
+[data-testid="stChatInput"] textarea::placeholder { color: #91A0B5 !important; -webkit-text-fill-color: #91A0B5 !important; }
+[data-testid="stChatInput"] button { color: #2463D4 !important; background: transparent !important; }
 
-[data-testid="stChatInput"] textarea::placeholder {
-    color: #839087 !important;
-    -webkit-text-fill-color: #839087 !important;
-}
-
-[data-testid="stChatInput"] button {
-    color: var(--accent) !important;
-    background: transparent !important;
-}
-
-
-/* FILE UPLOADER */
-
-[data-testid="stFileUploader"],
-[data-testid="stFileUploader"] section,
+/* Uploaders, alerts, tabs */
+[data-testid="stFileUploader"], [data-testid="stFileUploader"] section,
 [data-testid="stFileUploader"] section > div {
-    background: rgba(39,51,43,.52) !important;
-    color: #DCE6DE !important;
-    border: 1px dashed rgba(85,214,160,.35) !important;
-    border-radius: 16px !important;
+  background: #F7FAFF !important; color: #40516B !important;
+  border: 1px dashed #AFC5E8 !important; border-radius: 15px !important;
 }
-
 [data-testid="stFileUploader"] button {
-    background: #29352D !important;
-    color: var(--accent) !important;
-    border: 1px solid #45564A !important;
-    border-radius: 50px !important;
+  background: #EAF1FF !important; color: #1457C5 !important;
+  border: 1px solid #C9DAFA !important; border-radius: 50px !important;
 }
-
-[data-testid="stFileUploader"] small,
-[data-testid="stFileUploader"] span {
-    color: #AAB7AD !important;
-}
-
-
-/* ALERTS, EXPANDERS, TABS AND TABLES */
-
+[data-testid="stFileUploader"] small, [data-testid="stFileUploader"] span { color: #667792 !important; }
 [data-testid="stAlert"] {
-    background: rgba(39,51,43,.68) !important;
-    color: #EAF2EC !important;
-    border: 1px solid rgba(220,244,228,.12) !important;
-    border-radius: 13px !important;
+  background: #F0F6FF !important; color: #28466F !important;
+  border: 1px solid #D6E5FC !important; border-radius: 13px !important;
 }
-
 [data-testid="stExpander"] {
-    background: rgba(39,51,43,.42) !important;
-    border: 1px solid rgba(220,244,228,.11) !important;
-    border-radius: 14px !important;
+  background: rgba(255,255,255,.8) !important; border: 1px solid #DCE6F5 !important;
+  border-radius: 14px !important;
 }
-
-[data-testid="stExpander"] details,
-[data-testid="stExpander"] summary {
-    background: transparent !important;
-    color: #EAF2EC !important;
+[data-testid="stExpander"] details, [data-testid="stExpander"] summary {
+  background: transparent !important; color: #29456E !important;
 }
-
-[data-testid="stTabs"] button {
-    color: #AEBAB1 !important;
+[data-testid="stTabs"] button { color: #61728D !important; }
+[data-testid="stTabs"] button[aria-selected="true"] { color: #1457C5 !important; border-bottom-color: #2463D4 !important; }
+[data-testid="stDataFrame"], [data-testid="stTable"] {
+  background: #FFFFFF !important; color: #34445E !important;
+  border: 1px solid #DCE6F5 !important; border-radius: 13px !important; overflow: hidden;
 }
-
-[data-testid="stTabs"] button[aria-selected="true"] {
-    color: var(--accent) !important;
-    border-bottom-color: var(--accent) !important;
-}
-
-[data-testid="stDataFrame"],
-[data-testid="stTable"] {
-    background: #1A211C !important;
-    color: #EAF2EC !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 13px !important;
-    overflow: hidden;
-}
-
-[data-testid="stDataFrame"] * {
-    color: #EAF2EC !important;
-}
-
-
-/* METRICS, CAPTIONS AND PROGRESS */
-
 [data-testid="stMetric"] {
-    background: rgba(39,51,43,.55) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 14px !important;
-    padding: 12px !important;
+  background: #FFFFFF !important; border: 1px solid #DCE6F5 !important;
+  border-radius: 14px !important; padding: 12px !important;
 }
-
-[data-testid="stMetricLabel"],
-[data-testid="stMetricValue"] {
-    color: #EAF2EC !important;
-}
-
-[data-testid="stCaptionContainer"],
-.stCaption {
-    color: var(--muted) !important;
-}
-
-.stProgress > div > div {
-    background: #2A352D !important;
-    border-radius: 20px !important;
-}
-
-.stProgress > div > div > div {
-    background: linear-gradient(90deg, #35B982, #83E6B8) !important;
-    border-radius: 20px !important;
-}
-
-hr {
-    border-color: rgba(220,244,228,.10) !important;
-}
-
-a {
-    color: var(--accent) !important;
-}
-
-::selection {
-    background: rgba(85,214,160,.28);
-    color: #fff;
-}
-
-
-/* ACCESSIBILITY */
-
+[data-testid="stMetricLabel"], [data-testid="stMetricValue"] { color: #24436F !important; }
+[data-testid="stCaptionContainer"], .stCaption { color: #71819A !important; }
+.stProgress > div > div { background: #E5EDF9 !important; border-radius: 20px !important; }
+.stProgress > div > div > div { background: linear-gradient(90deg, #2463D4, #70A3F2) !important; border-radius: 20px !important; }
+hr { border-color: #E1E9F5 !important; }
+a { color: #1457C5 !important; }
+::selection { background: rgba(37,99,235,.18); color: #102D5B; }
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-    }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -1244,186 +728,184 @@ if st.session_state.page == "Dashboard":
 elif st.session_state.page == "AI Chatbot":
 
     st.markdown("""
-        <div class="hero-title">
-            AI <span>Assistant</span>
-        </div>
-
+        <div class="hero-title">AI <span>Assistant</span></div>
         <div class="hero-subtitle">
-            Ask anything. Understand everything.
-            Your learning companion, powered by Gemini.
+            Ask questions, upload study material, and work through concepts with your AI learning companion.
         </div>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([2, 1], gap="large")
-
     with col1:
-
         study_mode = st.segmented_control(
             "Response style",
             ["Normal Mode", "Study Mode"],
             default=st.session_state.study_mode,
             key="study_mode_control"
         )
-
         if study_mode:
             st.session_state.study_mode = study_mode
 
     with col2:
-
         if st.session_state.study_mode == "Study Mode":
-
-            marks_options = [
-                "2 Marks",
-                "5 Marks",
-                "7 Marks",
-                "10 Marks"
-            ]
-
+            marks_options = ["2 Marks", "5 Marks", "7 Marks", "10 Marks"]
             marks = st.selectbox(
                 "Answer format",
                 marks_options,
                 index=marks_options.index(st.session_state.answer_marks)
             )
-
             st.session_state.answer_marks = marks
 
-        st.markdown("---")
+    with st.expander("＋  Attach files to your question", expanded=False):
+        st.caption("Upload PDFs or images and ask Intellecta to explain, summarize, extract, or analyze their content.")
+        chat_files = st.file_uploader(
+            "Choose PDF or image files",
+            type=["pdf", "png", "jpg", "jpeg", "webp"],
+            accept_multiple_files=True,
+            key="chat_attachments",
+            help="Supported: PDF, PNG, JPG, JPEG and WEBP. Keep each file under 15 MB."
+        )
+        if chat_files:
+            total_size = sum(file.size for file in chat_files)
+            st.caption(f"{len(chat_files)} file(s) selected · {total_size / (1024 * 1024):.1f} MB total")
+            for file in chat_files:
+                st.write(f"📎 {file.name}")
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-        if not st.session_state.messages:
-            st.markdown(
-            """
+    if not st.session_state.messages:
+        st.markdown("""
             <div class="glass-card">
-                <div class="feature-title">
-                    What would you like to learn today?
-                </div>
+                <div class="feature-title">What would you like to learn today?</div>
                 <div class="feature-description">
-                    Ask a technical question, understand a difficult
-                    topic, or prepare an exam-oriented answer.
+                    Ask a technical question, prepare an exam answer, or attach a PDF/image
+                    and ask questions about the material.
                 </div>
             </div>
-            """,
-            unsafe_allow_html=True
-            )
+        """, unsafe_allow_html=True)
 
-    user_prompt = st.chat_input("Ask your question here...")
+        st.markdown("**Try asking**")
+        suggestion_cols = st.columns(3)
+        suggestions = [
+            "Explain a difficult concept simply",
+            "Create 5 exam questions on DBMS",
+            "Give me a step-by-step example"
+        ]
+        for suggestion_col, suggestion in zip(suggestion_cols, suggestions):
+            with suggestion_col:
+                if st.button(suggestion, use_container_width=True):
+                    st.session_state["suggested_chat_prompt"] = suggestion
+                    st.rerun()
 
+    suggested_prompt = st.session_state.pop("suggested_chat_prompt", "")
+    user_prompt = st.chat_input("Ask Intellecta anything...")
+    if not user_prompt and suggested_prompt:
+        user_prompt = suggested_prompt
 
     if user_prompt:
+        selected_files = chat_files if "chat_files" in locals() and chat_files else []
+        file_parts = []
+        file_names = []
+        total_size = sum(f.size for f in selected_files)
 
-        st.session_state.messages.append({
-            "role": "user",
-            "content": user_prompt
-        })
+        if total_size > 30 * 1024 * 1024:
+            st.error("The combined attachment size is over 30 MB. Please upload fewer or smaller files.")
+            st.stop()
 
-        save_message(
-            st.session_state.conversation_id,
-            "user",
-            user_prompt
-        )
+        for uploaded in selected_files:
+            if uploaded.size > 15 * 1024 * 1024:
+                st.error(f"{uploaded.name} is larger than 15 MB. Please upload a smaller file.")
+                st.stop()
+            mime_type = uploaded.type or ""
+            if mime_type == "application/pdf" or uploaded.name.lower().endswith(".pdf"):
+                mime_type = "application/pdf"
+            elif uploaded.name.lower().endswith((".jpg", ".jpeg")):
+                mime_type = "image/jpeg"
+            elif uploaded.name.lower().endswith(".png"):
+                mime_type = "image/png"
+            elif uploaded.name.lower().endswith(".webp"):
+                mime_type = "image/webp"
+
+            if mime_type not in ["application/pdf", "image/jpeg", "image/png", "image/webp"]:
+                continue
+
+            file_parts.append(types.Part.from_bytes(data=uploaded.getvalue(), mime_type=mime_type))
+            file_names.append(uploaded.name)
+
+        visible_prompt = user_prompt
+        if file_names:
+            visible_prompt += "\n\nAttached files: " + ", ".join(file_names)
+
+        st.session_state.messages.append({"role": "user", "content": visible_prompt})
+        save_message(st.session_state.conversation_id, "user", visible_prompt)
 
         with st.chat_message("user"):
             st.markdown(user_prompt)
+            if file_names:
+                st.caption("📎 Attached: " + ", ".join(file_names))
+
+        recent_messages = st.session_state.messages[-7:]
+        conversation_context = "\n".join([
+            f"{'User' if m['role'] == 'user' else 'Assistant'}: {m['content']}"
+            for m in recent_messages[:-1]
+        ])
 
         if st.session_state.study_mode == "Study Mode":
-
             system_prompt = f"""
 You are Intellecta, a professional academic AI study assistant.
-
-Answer the following question in clear academic English.
-The answer is for a university examination worth {st.session_state.answer_marks}.
-
-Follow these rules:
-
-- Start with a clear definition or introduction.
-- Use meaningful headings and subheadings.
-- Use numbered points or bullet points.
-- Explain concepts in understandable language.
-- Add examples wherever useful.
-- For comparison questions, use a comparison table.
-- Include advantages, disadvantages or applications when relevant.
-- End with a short conclusion.
-- Match the depth of the answer to the requested marks.
-- Avoid unnecessary repetition.
-- Do not invent facts.
-
-Question: {user_prompt}
+Answer in clear academic English for a university examination worth {st.session_state.answer_marks}.
+Use a clear definition/introduction, meaningful headings, numbered points, simple explanations,
+examples where useful, comparison tables when relevant, and a short conclusion.
+Match the depth to the marks. Avoid repetition and do not invent facts.
 """
-
+            max_tokens = 2200
+        else:
+            system_prompt = """
+You are Intellecta, a helpful, accurate and professional learning assistant.
+Explain concepts in simple language, use step-by-step reasoning and practical examples when useful.
+Use headings and bullets for readability. Be friendly, concise and honest about uncertainty.
+When files are attached, carefully inspect their contents and answer the user's specific request.
+For PDFs, use the supplied document as the primary source. For images, describe only what is relevant
+to the user's question. If a file is unreadable or unsupported, explain the limitation.
+"""
             max_tokens = 1800
 
-        else:
-
-            previous_messages = st.session_state.messages[-6:]
-
-            conversation_context = "\n".join([
-                f"{'User' if m['role'] == 'user' else 'Assistant'}: {m['content']}"
-                for m in previous_messages
-            ])
-
-            system_prompt = f"""
-You are Intellecta, a helpful and professional learning assistant.
-
-Explain concepts in simple, clear language.
-Use step-by-step explanations when useful.
-Include practical examples.
-Use headings and bullet points for readability.
-Be accurate, friendly and concise.
-Avoid unnecessary repetition.
+        full_prompt = f"""
+{system_prompt}
 
 Recent conversation:
 {conversation_context}
 
-Respond to the latest user question.
+Latest user question:
+{user_prompt}
+
+If one or more files are attached, analyze them in the context of the latest question.
+Clearly distinguish information found in the uploaded files from general explanation.
 """
-
-            max_tokens = 1500
-
         with st.chat_message("assistant"):
-
             response_placeholder = st.empty()
             full_response = ""
-
             try:
-
+                request_contents = [full_prompt] + file_parts
                 stream = client.models.generate_content_stream(
                     model=MODEL_NAME,
-                    contents=system_prompt,
+                    contents=request_contents,
                     config=types.GenerateContentConfig(
                         temperature=0.4,
                         max_output_tokens=max_tokens
                     )
                 )
-
                 for chunk in stream:
-
                     if chunk.text:
                         full_response += chunk.text
-
-                        response_placeholder.markdown(
-                            full_response + "▌"
-                        )
-
+                        response_placeholder.markdown(full_response + "▌")
                 response_placeholder.markdown(
                     full_response or "I couldn't generate a response. Please try again."
                 )
-
                 if full_response:
-
-                    st.session_state.messages.append({
-                        "role": "assistant",
-                        "content": full_response
-                    })
-
-                    save_message(
-                        st.session_state.conversation_id,
-                        "assistant",
-                        full_response
-                    )
-
+                    st.session_state.messages.append({"role": "assistant", "content": full_response})
+                    save_message(st.session_state.conversation_id, "assistant", full_response)
             except Exception as error:
                 st.error(f"Unable to generate response: {error}")
 
